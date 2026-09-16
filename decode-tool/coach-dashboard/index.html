@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decode · Coach Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0D7377;--teal-dk:#0A5C60;--teal-lt:#DFF2F3;
+  --coral:#C44B1C;--indigo:#4A35A0;
+  --dark:#1A1A2E;--mid:#5A6678;--light:#F4F6F8;
+  --border:#DDE3EA;--white:#FFF;
+  --sh:0 2px 14px rgba(0,0,0,.07);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--light);color:var(--dark);min-height:100vh}
+.topbar{background:var(--dark);color:#fff;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.topbar-brand{font-size:1.25rem;font-weight:900;letter-spacing:-0.5px;color:#7ABFCA}
+.topbar-sub{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#5A7080;margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.btn-sm{padding:7px 16px;border-radius:8px;border:none;cursor:pointer;font-size:.8rem;font-weight:700;transition:background .15s}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-dk)}
+.btn-outline{background:transparent;color:#7ABFCA;border:1.5px solid #7ABFCA}.btn-outline:hover{background:rgba(122,191,202,.1)}
+
+.page{max-width:1040px;margin:0 auto;padding:32px 24px}
+.page-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+.page-title{font-size:1.5rem;font-weight:800}
+.page-sub{font-size:.83rem;color:var(--mid);margin-top:3px}
+
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.stat-card{background:var(--white);border-radius:12px;padding:18px 20px;box-shadow:var(--sh)}
+.stat-n{font-size:2rem;font-weight:800;color:var(--teal)}
+.stat-l{font-size:.78rem;color:var(--mid);margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+
+.section-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--mid);margin-bottom:10px}
+
+.profile-table{width:100%;background:var(--white);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
+.profile-table table{width:100%;border-collapse:collapse}
+.profile-table th{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--mid);padding:12px 16px;text-align:left;border-bottom:1.5px solid var(--border);background:#FAFBFC}
+.profile-table td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:.88rem;vertical-align:middle}
+.profile-table tr:last-child td{border-bottom:none}
+.profile-table tr:hover td{background:#FAFCFC}
+
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.72rem;font-weight:700}
+.pill-flow{background:var(--teal-lt);color:var(--teal)}
+.pill-core{background:#E8ECF8;color:var(--indigo)}
+.date-txt{color:var(--mid);font-size:.8rem}
+
+.action-btn{padding:6px 13px;border-radius:7px;border:none;cursor:pointer;font-size:.78rem;font-weight:700;transition:background .15s;white-space:nowrap}
+.action-gen{background:#E8F0FF;color:var(--indigo)}.action-gen:hover{background:#D4E0FF}
+.action-dl{background:var(--teal-lt);color:var(--teal-dk)}.action-dl:hover{background:#BEE6E8}
+.action-spin{background:#F4F6F8;color:var(--mid);cursor:default}
+
+.empty{padding:48px;text-align:center;color:var(--mid)}
+.empty-icon{font-size:2.5rem;margin-bottom:12px}
+.empty-txt{font-size:.92rem}
+
+.teams-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:32px}
+.team-card{background:var(--white);border-radius:12px;padding:18px;box-shadow:var(--sh);cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.team-card:hover{border-color:var(--teal)}
+.team-card.active{border-color:var(--teal)}
+.team-name{font-weight:700;font-size:.95rem}
+.team-count{font-size:.78rem;color:var(--mid);margin-top:3px}
+.team-leads{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+
+.new-team-form{display:flex;gap:10px;align-items:center;margin-bottom:24px}
+.new-team-form input{flex:1;border:1.5px solid var(--border);border-radius:9px;padding:9px 13px;font-size:.88rem;outline:none}
+.new-team-form input:focus{border-color:var(--teal)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:100}
+.modal{background:var(--white);border-radius:16px;padding:28px;width:90%;max-width:480px;box-shadow:0 8px 40px rgba(0,0,0,.2)}
+.modal h3{font-size:1.05rem;font-weight:800;margin-bottom:16px}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--mid)}
+.modal-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.modal-row:last-child{border-bottom:none}
+.check-btn{padding:5px 12px;border-radius:6px;border:1.5px solid var(--border);background:var(--white);cursor:pointer;font-size:.78rem;font-weight:700;color:var(--mid)}
+.check-btn.checked{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:11px 22px;border-radius:10px;font-size:.88rem;font-weight:600;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+.tab-row{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.tab{padding:10px 20px;font-size:.83rem;font-weight:700;color:var(--mid);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-2px}
+.tab.active{color:var(--teal);border-bottom-color:var(--teal)}
+
+.loading{text-align:center;padding:40px;color:var(--mid);font-size:.88rem}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-brand">Decode</div>
+    <div class="topbar-sub">Coach Dashboard</div>
+  </div>
+  <div class="topbar-right">
+    <button class="btn-sm btn-outline" onclick="copyQLink()">📋 Copy questionnaire link</button>
+    <button class="btn-sm btn-teal" onclick="loadAll()">↻ Refresh</button>
+  </div>
+</div>
+
+<div class="page">
+  <div class="tab-row">
+    <div class="tab active" onclick="switchTab('profiles',this)">Profiles</div>
+    <div class="tab" onclick="switchTab('teams',this)">Teams</div>
+  </div>
+
+  <!-- ── PROFILES TAB ── -->
+  <div id="tab-profiles">
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card"><div class="stat-n" id="stat-total">—</div><div class="stat-l">Total profiles</div></div>
+      <div class="stat-card"><div class="stat-n" id="stat-pdfs">—</div><div class="stat-l">PDFs ready</div></div>
+      <div class="stat-card"><div class="stat-n" id="stat-pending">—</div><div class="stat-l">PDF pending</div></div>
+    </div>
+    <div class="section-title">All Profiles</div>
+    <div class="profile-table" id="profile-table">
+      <div class="loading">Loading profiles…</div>
+    </div>
+  </div>
+
+  <!-- ── TEAMS TAB ── -->
+  <div id="tab-teams" style="display:none">
+    <div class="new-team-form">
+      <input id="new-team-name" type="text" placeholder="New team name…">
+      <button class="btn-sm btn-teal" onclick="createTeam()">+ Create team</button>
+    </div>
+    <div class="section-title">Your Teams</div>
+    <div class="teams-grid" id="teams-grid"><div class="loading">Loading teams…</div></div>
+    <div id="team-detail" style="display:none">
+      <div class="section-title" style="margin-top:24px">Team members</div>
+      <div class="profile-table" id="team-members-table"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const SB_URL='https://uhnuwktwwvskitgbzicz.supabase.co';
+const SB_KEY='sb_publishable__B3tyjXlQjA37-nOqeb-Aw_4UM8NGO9';
+const H={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+// PDF server runs locally — start with: python pdf_server.py
+const PDF_SERVER='http://localhost:5050';
+
+// Questionnaire URL — update this once you've hosted it
+const Q_URL=window.location.origin+'/decode-tool/';
+
+let allProfiles=[], allTeams=[], activeTeamId=null;
+
+function toast(msg,ms=2800){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),ms);
+}
+
+function switchTab(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-profiles').style.display=name==='profiles'?'':'none';
+  document.getElementById('tab-teams').style.display=name==='teams'?'':'none';
+  if(name==='teams')loadTeams();
+}
+
+async function sb(path,opts={}){
+  const r=await fetch(SB_URL+path,{...opts,headers:{...H,...(opts.headers||{})}});
+  const txt=await r.text();
+  try{return JSON.parse(txt);}catch{return txt;}
+}
+
+// ── PROFILES ──────────────────────────────────────────────────────────────────
+async function loadAll(){
+  document.getElementById('profile-table').innerHTML='<div class="loading">Loading…</div>';
+  const rows=await sb('/rest/v1/profiles?select=*,clients(name,email)&order=created_at.desc');
+  allProfiles=Array.isArray(rows)?rows:[];
+  renderProfiles(allProfiles);
+}
+
+function renderProfiles(profiles){
+  const total=profiles.length;
+  const pdfs=profiles.filter(p=>p.pdf_url).length;
+  document.getElementById('stat-total').textContent=total;
+  document.getElementById('stat-pdfs').textContent=pdfs;
+  document.getElementById('stat-pending').textContent=total-pdfs;
+
+  if(!total){
+    document.getElementById('profile-table').innerHTML=`
+      <div class="empty"><div class="empty-icon">📋</div>
+      <div class="empty-txt">No profiles yet — share your questionnaire link to get started.</div></div>`;
+    return;
+  }
+
+  const rows=profiles.map(p=>{
+    const name=p.clients?.name||'Unknown';
+    const email=p.clients?.email||'';
+    const date=new Date(p.created_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+    const action=p.pdf_url
+      ? `<button class="action-btn action-dl" onclick="downloadPdf('${p.id}')">⬇ Download PDF</button>`
+      : `<button class="action-btn action-gen" id="gen-${p.id}" onclick="generatePdf('${p.id}')">⚙ Generate PDF</button>`;
+    return `<tr>
+      <td><div style="font-weight:700">${esc(name)}</div><div style="font-size:.75rem;color:var(--mid)">${esc(email)}</div></td>
+      <td><span class="pill pill-flow">${esc(p.flow_lead)}</span></td>
+      <td><span class="pill pill-core">${esc(p.core_lead)}</span></td>
+      <td><span class="date-txt">${date}</span></td>
+      <td>${action}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('profile-table').innerHTML=`
+    <table>
+      <thead><tr>
+        <th>Client</th><th>FLOW Lead</th><th>CORE Lead</th><th>Completed</th><th>Report</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+async function generatePdf(profileId){
+  const btn=document.getElementById('gen-'+profileId);
+  if(btn){btn.textContent='⏳ Generating…';btn.className='action-btn action-spin';btn.disabled=true;}
+  try{
+    const r=await fetch(`${PDF_SERVER}/generate/${profileId}`,{method:'POST'});
+    const data=await r.json();
+    if(data.ok){
+      toast('✅ PDF generated successfully!');
+      setTimeout(loadAll,500);
+    }else{
+      toast('❌ '+( data.error||'Generation failed'));
+      if(btn){btn.textContent='⚙ Generate PDF';btn.className='action-btn action-gen';btn.disabled=false;}
+    }
+  }catch(e){
+    toast('⚠ PDF server not running — start it with: python pdf_server.py');
+    if(btn){btn.textContent='⚙ Generate PDF';btn.className='action-btn action-gen';btn.disabled=false;}
+  }
+}
+
+async function downloadPdf(profileId){
+  toast('⏳ Getting download link…');
+  try{
+    const r=await fetch(`${PDF_SERVER}/download/${profileId}`);
+    const data=await r.json();
+    if(data.url){window.open(data.url,'_blank');}
+    else{toast('❌ '+(data.error||'Could not get link'));}
+  }catch(e){
+    toast('⚠ PDF server not running — start it with: python pdf_server.py');
+  }
+}
+
+function copyQLink(){
+  navigator.clipboard.writeText(Q_URL).then(()=>toast('📋 Questionnaire link copied!'));
+}
+
+// ── TEAMS ─────────────────────────────────────────────────────────────────────
+async function loadTeams(){
+  document.getElementById('teams-grid').innerHTML='<div class="loading">Loading…</div>';
+  allTeams=await sb('/rest/v1/teams?select=*&order=created_at.desc')||[];
+  renderTeams();
+}
+
+function renderTeams(){
+  if(!allTeams.length){
+    document.getElementById('teams-grid').innerHTML=`
+      <div class="empty"><div class="empty-txt">No teams yet — create one above.</div></div>`;
+    return;
+  }
+  document.getElementById('teams-grid').innerHTML=allTeams.map(t=>`
+    <div class="team-card${activeTeamId===t.id?' active':''}" onclick="selectTeam('${t.id}')">
+      <div class="team-name">${esc(t.name)}</div>
+      <div class="team-count">${t.description||''}</div>
+    </div>`).join('');
+}
+
+async function createTeam(){
+  const inp=document.getElementById('new-team-name');
+  const name=inp.value.trim();
+  if(!name)return;
+  await sb('/rest/v1/teams',{method:'POST',body:JSON.stringify({name}),
+    headers:{Prefer:'return=minimal'}});
+  inp.value='';
+  toast('✅ Team created');
+  loadTeams();
+}
+
+async function selectTeam(teamId){
+  activeTeamId=teamId;
+  renderTeams();
+  document.getElementById('team-detail').style.display='';
+  document.getElementById('team-members-table').innerHTML='<div class="loading">Loading…</div>';
+
+  // Load team members
+  const members=await sb(`/rest/v1/team_members?team_id=eq.${teamId}&select=profile_id,profiles(id,flow_lead,core_lead,flow_order,core_order,clients(name,email),created_at)`);
+  const profiles=(members||[]).map(m=>m.profiles).filter(Boolean);
+
+  if(!profiles.length){
+    document.getElementById('team-members-table').innerHTML=`
+      <div style="padding:24px 20px">
+        <div style="font-size:.88rem;color:var(--mid);margin-bottom:16px">No members yet. Add profiles to this team:</div>
+        ${renderAddMemberRows(teamId)}
+      </div>`;
+    return;
+  }
+
+  const rows=profiles.map(p=>`<tr>
+    <td><div style="font-weight:700">${esc(p.clients?.name||'—')}</div></td>
+    <td><span class="pill pill-flow">${esc(p.flow_lead)}</span></td>
+    <td><span class="pill pill-core">${esc(p.core_lead)}</span></td>
+    <td><button class="action-btn" style="background:#FEE2E2;color:#B91C1C" onclick="removeMember('${teamId}','${p.id}')">Remove</button></td>
+  </tr>`).join('');
+
+  // Team performance lead summary
+  const fScores={Firm:0,Logical:0,Outgoing:0,Warm:0};
+  const cScores={Composed:0,Open:0,Reserved:0,Energised:0};
+  profiles.forEach(p=>{
+    (p.flow_order||[]).forEach((t,i)=>{fScores[t]=(fScores[t]||0)+(4-i);});
+    (p.core_order||[]).forEach((t,i)=>{cScores[t]=(cScores[t]||0)+(4-i);});
+  });
+  const fRank=Object.keys(fScores).sort((a,b)=>fScores[b]-fScores[a]);
+  const cRank=Object.keys(cScores).sort((a,b)=>cScores[b]-cScores[a]);
+
+  document.getElementById('team-members-table').innerHTML=`
+    <div style="padding:16px 20px;background:#FAFBFC;border-bottom:1.5px solid var(--border);display:flex;gap:24px;flex-wrap:wrap">
+      <div><div style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--mid)">Team FLOW Lead</div>
+        <div style="margin-top:4px;display:flex;gap:6px">${fRank.map((t,i)=>`<span class="pill pill-flow" style="opacity:${1-i*0.2}">${t}</span>`).join('')}</div></div>
+      <div><div style="font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--mid)">Team CORE Lead</div>
+        <div style="margin-top:4px;display:flex;gap:6px">${cRank.map((t,i)=>`<span class="pill pill-core" style="opacity:${1-i*0.2}">${t}</span>`).join('')}</div></div>
+      <div style="margin-left:auto">
+        <button class="action-btn action-gen" onclick="showAddMembers('${teamId}')">+ Add members</button>
+      </div>
+    </div>
+    <table><thead><tr><th>Client</th><th>FLOW Lead</th><th>CORE Lead</th><th></th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+
+function renderAddMemberRows(teamId){
+  if(!allProfiles.length)return '<div style="font-size:.82rem;color:var(--mid)">Load profiles tab first to see available profiles.</div>';
+  return allProfiles.map(p=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:.88rem">${esc(p.clients?.name||'—')}</span>
+      <button class="action-btn action-gen" onclick="addMember('${teamId}','${p.id}',this)">Add</button>
+    </div>`).join('');
+}
+
+async function showAddMembers(teamId){
+  const names=allProfiles.map(p=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+      <div><div style="font-weight:600;font-size:.88rem">${esc(p.clients?.name||'—')}</div>
+        <div style="font-size:.75rem;color:var(--mid)">${p.flow_lead} · ${p.core_lead}</div></div>
+      <button class="action-btn action-gen" onclick="addMember('${teamId}','${p.id}',this)">Add</button>
+    </div>`).join('');
+  const div=document.createElement('div');
+  div.className='modal-overlay';
+  div.innerHTML=`<div class="modal" style="position:relative">
+    <h3>Add members to team</h3>
+    <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">✕</button>
+    <div style="max-height:340px;overflow-y:auto">${names||'<div style="color:var(--mid);font-size:.88rem">No profiles available. Go to the Profiles tab first.</div>'}</div>
+  </div>`;
+  document.body.appendChild(div);
+}
+
+async function addMember(teamId,profileId,btn){
+  if(btn){btn.textContent='✓';btn.disabled=true;}
+  await sb('/rest/v1/team_members',{method:'POST',
+    body:JSON.stringify({team_id:teamId,profile_id:profileId}),
+    headers:{Prefer:'return=minimal,resolution=ignore-duplicates'}});
+  toast('✅ Member added');
+  selectTeam(teamId);
+}
+
+async function removeMember(teamId,profileId){
+  await sb(`/rest/v1/team_members?team_id=eq.${teamId}&profile_id=eq.${profileId}`,{method:'DELETE'});
+  toast('Removed from team');
+  selectTeam(teamId);
+}
+
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// Init
+loadAll();
+</script>
+</body>
+</html>

@@ -450,7 +450,7 @@ const CORE_CONTENT={
 };
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
-const S={screen:'landing',name:'',email:'',qi:0,qData:new Array(20).fill(null)};
+const S={screen:'landing',name:'',email:'',org:'',qi:0,qData:new Array(20).fill(null)};
 let CQ={slots:new Array(7).fill(null),pool:[],sel:null};
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -483,6 +483,10 @@ function showLanding(){
           <label for="e">Your email</label>
           <input id="e" type="email" placeholder="you@example.com" value="${esc(S.email)}" autocomplete="email">
         </div>
+        <div class="fgrp">
+          <label for="o">Organisation code <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#999">(provided by your coach)</span></label>
+          <input id="o" type="text" placeholder="e.g. ACME2026" value="${esc(S.org)}" autocomplete="off" style="text-transform:uppercase">
+        </div>
         <button class="btn btn-primary" onclick="startQ()">Begin Decode →</button>
       </div>
     </div>
@@ -492,7 +496,9 @@ function showLanding(){
 function startQ(){
   const n=document.getElementById('n').value.trim();
   if(!n){alert('Please enter your name to begin.');return;}
-  S.name=n;S.email=document.getElementById('e').value.trim();
+  S.name=n;
+  S.email=document.getElementById('e').value.trim();
+  S.org=document.getElementById('o').value.trim().toUpperCase();
   S.qi=0;loadQ(0);renderQ();
 }
 
@@ -599,6 +605,7 @@ async function saveToSupabase(sc){
         core_lead:sc.lC, core_secondary:sc.secC, core_order:sc.coreOrder,
         scores:{fAvg:sc.fAvg,cAvg:sc.cAvg},
         report_date:reportDate,
+        org_code:S.org||null,
       })});
     const [profile]=await pRes.json();
     return profile?.id||null;

@@ -214,7 +214,7 @@ const QQ=[
   {n:10,m:'CORE',o:[{t:'Open',l:'Experimental & Curious'},{t:'Composed',l:'Cool-Headed & Serene'},{t:'Reserved',l:'Conscientious & Quality-Focused'},{t:'Energised',l:'Competitive & Driven'}]},
   {n:11,m:'FLOW',o:[{t:'Warm',l:'Harmonious & Gentle'},{t:'Logical',l:'Independent & Analytical'},{t:'Outgoing',l:'Expressive & Engaging'},{t:'Firm',l:'Focused & No-Nonsense'}]},
   {n:12,m:'CORE',o:[{t:'Energised',l:'Ambitious & Focused'},{t:'Reserved',l:'Methodical & Careful'},{t:'Composed',l:'Unfazed & Resilient'},{t:'Open',l:'Innovative & Adaptable'}]},
-  {n:13,m:'FLOW',o:[{t:'Outgoing',l:'Talkative & High-Energy'},{t:'Firm',l:'Straight-Talking & Challenging'},{t:'Logical',l:'Meticulous & Evidence-Based'},{t:'Warm',l:'Considerate & Inclusive'}]},
+  {n:13,m:'FLOW',o:[{t:'Outgoing',l:'Talkative & High-Energy'},{t:'Firm',l:'Straight-Talking & Challenging'},{t:'Logical',l:'Meticulous & Evidence-Based'},{t:'Warm',l:'Attentive & Patient'}]},
   {n:14,m:'CORE',o:[{t:'Composed',l:'Stable & Unhurried'},{t:'Open',l:'Creative & Spontaneous'},{t:'Energised',l:'Energetic & Goal-Driven'},{t:'Reserved',l:'Thorough & Vigilant'}]},
   {n:15,m:'FLOW',o:[{t:'Logical',l:'Reflective & Thorough'},{t:'Warm',l:'Supportive & Understanding'},{t:'Firm',l:'Direct & Gets Things Done'},{t:'Outgoing',l:'Vibrant & Sociable'}]},
   {n:16,m:'CORE',o:[{t:'Reserved',l:'Cautious & Considered'},{t:'Composed',l:'Consistent & Grounded'},{t:'Energised',l:'Driven & High-Energy'},{t:'Open',l:'Curious & Bold'}]},
@@ -684,7 +684,7 @@ function secDesc(name){
 async function showResults(){
   const sc=computeScores();S.screen='results';
 
-  // Show saving state briefly
+  // Show saving state
   document.getElementById('app').innerHTML=`
   <div class="screen" style="justify-content:center;min-height:100vh">
     <div class="inner" style="text-align:center;padding-top:80px">
@@ -695,6 +695,30 @@ async function showResults(){
   </div>`;
 
   const savedId=await saveToSupabase(sc);
+  const savedOk=!!savedId;
+
+  // Show thank-you screen — client does not see their profile
+  document.getElementById('app').innerHTML=`
+  <div class="screen" style="justify-content:center;min-height:100vh">
+    <div class="inner" style="text-align:center;padding-top:80px">
+      <div class="brand" style="margin-bottom:4px">Decode</div>
+      <div class="brand-sub" style="margin-bottom:36px">The Coaching Doc Ltd</div>
+      <div style="font-size:3rem;margin-bottom:20px">${savedOk?'✅':'📋'}</div>
+      <div style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:12px">
+        ${savedOk?'Profile submitted successfully':'Profile recorded'}
+      </div>
+      <div style="font-size:.95rem;color:var(--mid);line-height:1.7;max-width:380px;margin:0 auto">
+        ${savedOk
+          ?`Thank you, <strong style="color:var(--dark)">${esc(S.name)}</strong>. Your Decode profile has been sent to your coach, who will be in touch shortly.`
+          :`Thank you, <strong style="color:var(--dark)">${esc(S.name)}</strong>. Your responses have been recorded. Please let your coach know you have completed the questionnaire.`
+        }
+      </div>
+      <div style="margin-top:36px;padding:16px 20px;background:var(--teal-lt);border-radius:12px;font-size:.84rem;color:var(--teal-dk);line-height:1.6">
+        You can now close this window.
+      </div>
+    </div>
+  </div>`;
+  return; // Stop here — no profile display for clients
   const savedOk=!!savedId;
 
   const lF=sc.lF,lC=sc.lC,secF=sc.secF,secC=sc.secC;
@@ -765,7 +789,6 @@ async function showResults(){
         <div class="chips">
           <span class="chip">FLOW: ${esc(lF)}</span>
           <span class="chip" style="background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3)">CORE: ${esc(lC)}</span>
-          <span class="chip chip-sec">Also: ${esc(secF)} · ${esc(secC)}</span>
         </div>
         ${flowIntro?`<div class="hero-intro-label">Behavioural Style</div><div class="hero-intro">${esc(flowIntro)}</div>`:''}
         ${coreIntro?`<div class="hero-intro-label" style="margin-top:12px">Mindset</div><div class="hero-intro">${esc(coreIntro)}</div>`:''}

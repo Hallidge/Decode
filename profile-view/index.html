@@ -107,7 +107,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 
 /* two-col stmt grid */
 .stmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;margin:0 0 10px}
-.stmt-item{display:flex;gap:8px;align-items:flex-start;font-size:.75rem;line-height:1.52;color:var(--dark);padding:7px 8px;border-bottom:1px solid #EEF1F3}
+.stmt-item{display:flex;gap:8px;align-items:flex-start;font-size:.75rem;line-height:1.52;color:var(--dark);padding:12px 8px;border-bottom:1px solid #EEF1F3}
 .stmt-dot{flex-shrink:0;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#fff;margin-top:0}
 .stmt-dot.teal{background:var(--teal)}
 .stmt-dot.coral{background:var(--coral)}
@@ -129,6 +129,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .q-item{background:var(--light);border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
 /* blind spot */
+
+/* blind spot hdr */
+.blind-spot-hdr{background:#FFF4F0;border:1px solid #F0D0C0;border-radius:5px;padding:10px 14px;margin-bottom:8px}
+.blind-spot-hdr-lbl{font-size:.57rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.blind-spot-pills{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.blind-spot-hdr-desc{font-size:.7rem;color:var(--dark);line-height:1.45}
 .blind-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .blind-item{background:#FFF8F0;border-left:3px solid var(--coral);border-radius:0 4px 4px 0;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
@@ -164,6 +170,38 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 
 /* drivers */
 .drivers-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+/* decoding decisions */
+.dd-section-lbl{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);margin:16px 0 6px}
+.dd-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.dd-card{border-radius:5px;overflow:hidden}
+.dd-card-hdr{padding:8px 10px;color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.dd-card-body{background:#F7F9FA;padding:8px 10px}
+.dd-card-q{font-size:.7rem;font-style:italic;color:var(--dark);line-height:1.45;margin-bottom:10px}
+.dd-card-lines{border-bottom:1px solid #D8DDE3;margin-bottom:7px;height:0}
+
+/* summary page */
+.summ-hdr{background:var(--navy);padding:22px 40px 18px}
+.summ-hdr-eyebrow{font-size:.57rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px}
+.summ-hdr-name{font-size:2rem;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.1}
+.summ-hdr-lead-lbl{font-size:.57rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:7px}
+.summ-hdr-pills{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.summ-hdr-desc{font-size:.71rem;color:rgba(255,255,255,.6);line-height:1.5}
+.summ-section{margin:14px 40px;border-radius:6px;overflow:hidden;border:1px solid #E2EAF0}
+.summ-sec-hdr{padding:10px 16px;display:flex;align-items:center;gap:10px}
+.summ-sec-hdr.core-hdr{background:var(--indigo-lt);border-bottom:1px solid #D0C8EC}
+.summ-sec-hdr.flow-hdr{background:var(--teal-lt);border-bottom:1px solid #C0DDE0}
+.summ-sec-eyebrow{font-size:.57rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.summ-sec-title{font-size:.88rem;font-weight:800;color:var(--dark)}
+.summ-sec-body{background:#fff;padding:14px 16px;display:flex;align-items:center;gap:20px}
+.summ-sec-wheel{flex-shrink:0}
+.summ-sec-text{font-size:.72rem;color:var(--dark);line-height:1.55}
+
+/* back page */
+.back-page{background:#fff;min-height:297mm;position:relative;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:0 0 52px}
+.back-art{position:absolute;top:0;left:0;right:0;height:55%;opacity:.18;pointer-events:none}
+.back-title{font-size:1rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin-bottom:6px;text-align:center}
+.back-copy{font-size:.62rem;color:#8A9BA0;text-align:center}
+
 .driver-item{background:var(--light);border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
 /* coaching prompt */
@@ -190,7 +228,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
   .run-hdr,.coaching-prompt,.wwm-cell,.wwm-hdr,.perf-order-section,
   .pp-warn-card,.pp-consider,.reb-box,.voice-box,.en-col,.res-col,
   .drain-item,.proactive-item,.expand-item,.conf-item,.driver-item,
-  .q-item,.blind-item,.dm-para{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .q-item,.blind-item,.dm-para,.dd-card-hdr,.summ-hdr,.summ-sec-hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
@@ -474,7 +512,7 @@ function workWithMePage(fc,cc){
 function chDivPage(num,leadType){
   const names={1:'Assess',2:'Respond',3:'Sustain'};
   const tags={1:'How you show up at your best — and what can get in the way',2:'How your preferences shape your response to pressure and change',3:'Building and sustaining your performance over the long term'};
-  const secs={1:['Strengths','Derailers','Unlock','Rebalancers'],2:['Stress Triggers','Pressure Points','Decision Making','Blind Spot'],3:['Resilience','Drivers','Energisers','Confidence']};
+  const secs={1:['Strengths','Derailers','Unlock','Rebalancers'],2:['Stress Triggers','Pressure Points','Decision Making','Decoding Decisions','Blind Spot'],3:['Resilience','Drivers','Energisers','Confidence']};
   const cols={1:'ch-teal',2:'ch-coral',3:'ch-indigo'};
   const chips=secs[num].map(s=>`<div class="ch-chip">${s}</div>`).join('');
   return page(`ch-div ${cols[num]}`,`
@@ -515,7 +553,7 @@ function contentPage(secName,data,chNum){
 
   let body='';
   if(secName==='Rebalancers'){
-    body=(data||[]).map(s=>`<div class="reb-box">${esc(s)}</div>`).join('');
+    body=stmtGrid(data||[],iconCls,icon);
   } else if(secName==='Pressure Points'&&data){
     const cards=(data.warnings||[]).map(w=>`<div class="pp-warn-card"><span style="color:#C87800;flex-shrink:0;margin-top:1px">▲</span><span>${esc(w)}</span></div>`).join('');
     const considers=(data.consider||[]).map(([t,q])=>`<div class="pp-consider"><span class="pp-consider-tag">${esc(t)}</span><span>${esc(q)}</span></div>`).join('');
@@ -523,8 +561,18 @@ function contentPage(secName,data,chNum){
   } else if(secName==='Decision Making'&&data){
     const qs=(data.questions||[]).map(q=>`<div class="q-item">${esc(q)}</div>`).join('');
     body=`<div class="dm-para">${esc(data.para||'')}</div><p class="sub-lbl">Flex your thinking:</p><div class="q-grid">${qs}</div>`;
-  } else if(secName==='Blind Spot'&&Array.isArray(data)){
-    body=`<div class="blind-grid">${data.map(s=>`<div class="blind-item">${esc(s)}</div>`).join('')}</div>`;
+  } else if(secName==='Blind Spot'){
+    const stmts=Array.isArray(data)?data:(data&&data.statements||[]);
+    const bC=data&&data.blindCore;
+    const bF=data&&data.blindFlow;
+    const bCPill=bC?`<span class="perf-lead-pill" style="background:${CORE_COLORS[bC]}">${esc(bC)}</span>`:'';
+    const bFPill=bF?`<span class="perf-lead-pill" style="background:${FLOW_COLORS[bF]}">${esc(bF)}</span>`:'';
+    const blindHdr=(bC||bF)?`<div class="blind-spot-hdr">
+      <div class="blind-spot-hdr-lbl">Your Blind Spot Lead</div>
+      <div class="blind-spot-pills">${bCPill} <span style="color:var(--mid);font-size:.85rem">&amp;</span> ${bFPill}</div>
+      <div class="blind-spot-hdr-desc">Your least preferred types — the perspectives you naturally reach for last. The statements below explore how this shows up in practice.</div>
+    </div>`:'';
+    body=`${blindHdr}<div class="blind-grid">${stmts.map(s=>`<div class="blind-item">${esc(s)}</div>`).join('')}</div>`;
   } else if(secName==='Resilience'&&data){
     const sb=(data.setback||[]).map(s=>`<div class="res-item">${esc(s)}</div>`).join('');
     const su=(data.success||[]).map(s=>`<div class="res-item">${esc(s)}</div>`).join('');
@@ -566,6 +614,113 @@ function contentPage(secName,data,chNum){
     ${footer}
   `);
 }
+
+function decodingDecisionsPage(){
+  const pn=++_pageNum;
+  const coreQs={
+    'Composed':'What do I know for certain?',
+    'Open':'What possibilities haven\'t I considered yet?',
+    'Reserved':'What do I need to think through before committing?',
+    'Energised':'What\'s the boldest move available here?'
+  };
+  const flowQs={
+    'Firm':'What outcome am I driving toward?',
+    'Logical':'What does the evidence actually say?',
+    'Outgoing':'Who should be in this conversation?',
+    'Warm':'Who will this affect, and how?'
+  };
+  const cCards=CORE_TYPES.map(t=>`<div class="dd-card">
+    <div class="dd-card-hdr" style="background:${CORE_COLORS[t]}">${esc(t)}</div>
+    <div class="dd-card-body">
+      <div class="dd-card-q">${esc(coreQs[t]||'')}</div>
+      <div class="dd-card-lines"></div>
+      <div class="dd-card-lines" style="margin-top:7px"></div>
+      <div class="dd-card-lines" style="margin-top:7px"></div>
+    </div>
+  </div>`).join('');
+  const fCards=FLOW_TYPES.map(t=>`<div class="dd-card">
+    <div class="dd-card-hdr" style="background:${FLOW_COLORS[t]}">${esc(t)}</div>
+    <div class="dd-card-body">
+      <div class="dd-card-q">${esc(flowQs[t]||'')}</div>
+      <div class="dd-card-lines"></div>
+      <div class="dd-card-lines" style="margin-top:7px"></div>
+      <div class="dd-card-lines" style="margin-top:7px"></div>
+    </div>
+  </div>`).join('');
+  return page('',`
+    <div class="run-hdr"><span>Decode Profile&nbsp;·&nbsp;Confidential</span><span>Chapter 2&nbsp;·&nbsp;Respond</span></div>
+    <div class="content-page">
+      <div class="sec-header" style="margin-bottom:14px">
+        <div class="sec-hdr-text">
+          <div class="sec-title" style="font-size:1.4rem;font-weight:900">Decoding Decisions</div>
+          <div class="sec-desc" style="font-style:italic">Examine any decision through all eight lenses of the Decode framework. Work through the questions in any order — they surface what your default style might otherwise skip.</div>
+        </div>
+      </div>
+      <div class="dd-section-lbl">Core &middot; Mindset</div>
+      <div class="dd-cards">${cCards}</div>
+      <div class="dd-section-lbl">Flow &middot; Behaviour</div>
+      <div class="dd-cards">${fCards}</div>
+    </div>
+    <div class="page-footer"><span>The Coaching Doc Ltd.</span><span>Page ${pn}</span></div>
+  `);
+}
+
+function summaryPage(name,lF,lC,fOrder,cOrder){
+  const pn=++_pageNum;
+  const cPill=`<span class="perf-lead-pill" style="background:${CORE_COLORS[lC]}">${esc(lC)}</span>`;
+  const fPill=`<span class="perf-lead-pill" style="background:${FLOW_COLORS[lF]}">${esc(lF)}</span>`;
+  const cWheel=pieWheel(CORE_TYPES,CORE_COLORS,lC,160);
+  const fWheel=pieWheel(FLOW_TYPES,FLOW_COLORS,lF,160);
+  const cOrderStr=cOrder.map(t=>`<span style="color:${t===lC?CORE_COLORS[t]:'#6A7A84'};font-weight:${t===lC?700:400}">${esc(t)}</span>`).join('<span style="color:#9AAAB4"> &middot; </span>');
+  const fOrderStr=fOrder.map(t=>`<span style="color:${t===lF?FLOW_COLORS[t]:'#6A7A84'};font-weight:${t===lF?700:400}">${esc(t)}</span>`).join('<span style="color:#9AAAB4"> &middot; </span>');
+  return page('',`
+    <div class="run-hdr"><span>Decode Profile&nbsp;·&nbsp;Confidential</span><span>Your Profile</span></div>
+    <div class="summ-hdr">
+      <div class="summ-hdr-eyebrow">Your Profile</div>
+      <div class="summ-hdr-name">${esc(name)}</div>
+      <div class="summ-hdr-lead-lbl">Performance Lead</div>
+      <div class="summ-hdr-pills">${cPill} <span style="font-size:.85rem;color:rgba(255,255,255,.4);font-weight:500">&amp;</span> ${fPill}</div>
+      <div class="summ-hdr-desc">Your Performance Lead combines your Mindset Lead (CORE) and your Behavioural Lead (FLOW). Both are always in play.</div>
+    </div>
+    <div class="summ-section">
+      <div class="summ-sec-hdr core-hdr">
+        <div>
+          <div class="summ-sec-eyebrow">Core</div>
+          <div class="summ-sec-title">Mindset Lead</div>
+        </div>
+      </div>
+      <div class="summ-sec-body">
+        <div class="summ-sec-wheel">${cWheel}</div>
+        <div class="summ-sec-text">${cOrderStr}</div>
+      </div>
+    </div>
+    <div class="summ-section">
+      <div class="summ-sec-hdr flow-hdr">
+        <div>
+          <div class="summ-sec-eyebrow">Flow</div>
+          <div class="summ-sec-title">Behavioural Lead</div>
+        </div>
+      </div>
+      <div class="summ-sec-body">
+        <div class="summ-sec-wheel">${fWheel}</div>
+        <div class="summ-sec-text">${fOrderStr}</div>
+      </div>
+    </div>
+    <div class="page-footer"><span>The Coaching Doc Ltd.</span><span>Page ${pn}</span></div>
+  `);
+}
+
+function backPage(){
+  return page('back-page',`
+    <div class="cb cb-tl"></div><div class="cb cb-tr"></div>
+    <div class="back-art">${nodeArt()}</div>
+    <div>
+      <div class="back-title">Decode Profile</div>
+      <div class="back-copy">&copy; 2026 The Coaching Doc Ltd.&nbsp;&nbsp;All rights reserved.</div>
+    </div>
+  `);
+}
+
 // ── MAIN ──────────────────────────────────────────────────────────────────────
 async function loadProfile(){
   _pageNum=2;
@@ -607,12 +762,15 @@ async function loadProfile(){
     contentPage('Stress Triggers',cc['Stress Triggers'],2),
     contentPage('Pressure Points',cc['Pressure Points'],2),
     contentPage('Decision Making',cc['Decision Making'],2),
-    contentPage('Blind Spot',cc['Blind Spot'],2),
+    decodingDecisionsPage(),
+    contentPage('Blind Spot',{statements:cc['Blind Spot'],blindCore:cOrder[3],blindFlow:fOrder[3]},2),
     chDivPage(3,lC),
     contentPage('Resilience',cc.Resilience,3),
     contentPage('Drivers',cc.Drivers,3),
     contentPage('Energisers',cc.Energisers,3),
     contentPage('Confidence',cc.Confidence,3),
+    summaryPage(name,lF,lC,fOrder,cOrder),
+    backPage(),
   ];
 
   document.getElementById('root').innerHTML=pages.join('');

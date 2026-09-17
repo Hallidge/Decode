@@ -492,7 +492,7 @@ function stmtGrid(items,dotCls,icon){
   return`<div class="stmt-grid">${items.map(s=>`<div class="stmt-item"><div class="stmt-dot ${dotCls}">${icon||'·'}</div><span>${esc(s)}</span></div>`).join('')}</div>`;
 }
 
-let _pageNum=2;
+
 function contentPage(secName,data,chNum){
   const chNames={1:'Assess',2:'Respond',3:'Sustain'};
   const [icon,iconCls]=SEC_ICONS[secName]||['·','teal'];
@@ -504,7 +504,7 @@ function contentPage(secName,data,chNum){
   const selectSecs=new Set(['Strengths','Derailers','Unlock','Rebalancers','Stress Triggers','Blind Spot','Drivers']);
   const selectMsgs={
     'Strengths':'Select two or three that feel most true for you right now.',
-    'Derailers':'Select two or three that resonate — particularly when you're under pressure.',
+    'Derailers':'Select two or three that resonate — particularly when you\'re under pressure.',
     'Unlock':'Select two or three to share with your manager or coach.',
     'Rebalancers':'Select two or three to work with during your coaching.',
     'Stress Triggers':'Select two or three that feel most live for you.',

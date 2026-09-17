@@ -20,144 +20,162 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .btn-pdf{padding:9px 22px;background:var(--teal);color:#fff;border:none;border-radius:8px;font-size:.83rem;font-weight:700;cursor:pointer;letter-spacing:.03em}
 .btn-pdf:hover{background:var(--teal-dk)}
 
-.print-page{
-  width:210mm;min-height:297mm;background:#fff;
-  margin:16px auto;position:relative;overflow:hidden;
-  box-shadow:0 4px 32px rgba(0,0,0,.18);
-}
+.print-page{width:210mm;min-height:297mm;background:#fff;margin:16px auto;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.18)}
 
 /* ── COVER ── */
-.cover{
-  background:var(--navy);min-height:297mm;
-  display:flex;flex-direction:column;padding:52px 56px;
-  position:relative;
-}
-.cover-art{position:absolute;top:0;right:0;width:58%;height:100%;opacity:.28;pointer-events:none}
-.cover-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--teal2);position:relative;z-index:2}
-.cover-content{margin-top:auto;position:relative;z-index:2;padding-bottom:20px}
-.cover-label{font-size:.62rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--teal2);margin-bottom:18px}
-.cover-name{font-size:3.4rem;font-weight:900;line-height:1.03;letter-spacing:-.5px;color:#fff;margin-bottom:22px}
-.cover-meta{font-size:.78rem;color:rgba(255,255,255,.45);letter-spacing:.05em}
-.cb{position:absolute;width:28px;height:28px;border-color:rgba(255,255,255,.2);border-style:solid}
-.cb-tl{top:32px;left:40px;border-width:2px 0 0 2px}
-.cb-tr{top:32px;right:40px;border-width:2px 2px 0 0}
-.cb-bl{bottom:32px;left:40px;border-width:0 0 2px 2px}
-.cb-br{bottom:32px;right:40px;border-width:0 2px 2px 0}
+.cover{background:var(--navy);min-height:297mm;display:flex;flex-direction:column;position:relative}
+.cover-art{position:absolute;top:40px;left:0;right:0;height:56%;opacity:.5;pointer-events:none}
+.cover-content{margin-top:auto;position:relative;z-index:2;padding:0 52px 28px}
+.cover-label{font-size:.7rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--teal2);margin-bottom:22px}
+.cover-name{font-size:3.6rem;font-weight:900;line-height:1.02;letter-spacing:-.5px;color:#fff;margin-bottom:18px}
+.cover-meta{font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.04em}
+.cover-footer{border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:20px;padding:14px 52px}
+.cover-footer-brand{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal2);margin-bottom:2px}
+.cover-footer-tagline{font-size:.68rem;color:rgba(255,255,255,.5);line-height:1.4}
+.cb{position:absolute;width:32px;height:32px;border-color:rgba(255,255,255,.25);border-style:solid}
+.cb-tl{top:26px;left:34px;border-width:2px 0 0 2px}
+.cb-tr{top:26px;right:34px;border-width:2px 2px 0 0}
 
 /* ── RUNNING HEADER ── */
-.run-hdr{display:flex;justify-content:space-between;align-items:center;padding:13px 40px;border-bottom:1px solid #e0e8ea;font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mid)}
+.run-hdr{display:flex;justify-content:space-between;align-items:center;padding:11px 40px;border-bottom:1px solid #e2eaec;font-size:.58rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mid)}
 
 /* ── PERFORMANCE LEAD ── */
-.perf-page{padding:0 40px 40px}
-.page-title-bar{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--dark);color:#fff;padding:11px 40px;margin:0 -40px 28px}
-.type-wheels{display:flex;gap:32px;justify-content:center}
-.wheel-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
-.wheel-type-lbl{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
-.wheel-lead-lbl{font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
-.wheel-intro{font-size:.78rem;line-height:1.62;color:var(--dark)}
+.perf-intro{background:var(--navy);padding:15px 40px 14px}
+.perf-intro-eyebrow{font-size:.57rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px}
+.perf-intro-title{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px}
+.perf-intro-text{font-size:.73rem;color:rgba(255,255,255,.65);line-height:1.56}
+.perf-lead-band{background:#EDF6F7;border-bottom:1px solid #C8E2E4;padding:11px 40px}
+.perf-lead-eyebrow{font-size:.57rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+.perf-lead-pills{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.perf-lead-pill{padding:5px 16px;border-radius:4px;font-size:.82rem;font-weight:700;color:#fff}
+.perf-lead-text{font-size:.71rem;color:#3A4A54;line-height:1.5}
+.perf-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 40px 0}
+.perf-card{border-radius:6px;padding:13px 15px}
+.perf-card.core-card{background:#EFF3F6}
+.perf-card.flow-card{background:#E6F4F4}
+.perf-card-label{font-size:.57rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:2px}
+.perf-card-title{font-size:.92rem;font-weight:800;color:var(--dark);margin-bottom:8px}
+.perf-card-wheel{display:flex;justify-content:center;margin-bottom:8px}
+.perf-card-order{font-size:.66rem;text-align:center;margin-bottom:7px;line-height:1.7}
+.perf-card-intro{font-size:.71rem;line-height:1.56;color:var(--dark)}
+.perf-order-section{padding:10px 40px 12px}
+.perf-order-label{font-size:.57rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+.perf-order-row-label{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+.perf-order-gauges{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:10px}
+.gauge-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.gauge-name{font-size:.63rem;font-weight:700;color:var(--dark);text-align:center}
+.gauge-pos{font-size:.56rem;color:#8A9BA0;text-align:center}
 
 /* ── WORK WITH ME ── */
-.wwm-page{padding:0 40px 40px}
-.wwm-grid{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--teal);border-radius:4px;overflow:hidden}
-.wwm-cell{padding:20px 18px}
-.wwm-cell:nth-child(1),.wwm-cell:nth-child(2){border-bottom:2px solid var(--teal)}
-.wwm-cell:nth-child(1),.wwm-cell:nth-child(3){border-right:2px solid var(--teal)}
-.wwm-cell-title{font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.wwm-hdr{background:var(--navy);padding:18px 40px 14px;margin-bottom:14px}
+.wwm-hdr-title{font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:5px}
+.wwm-hdr-sub{font-size:.74rem;color:rgba(255,255,255,.6)}
+.wwm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 40px}
+.wwm-cell{padding:15px;background:#FAFAFA;overflow:hidden}
+.wwm-cell-rule{height:3px;margin:-15px -15px 12px;background:var(--teal)}
+.wwm-cell-rule.coral{background:var(--coral)}
+.wwm-cell-rule.indigo{background:var(--indigo)}
+.wwm-cell-title{font-size:.59rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
 .wwm-cell-title.coral{color:var(--coral)}
-.wwm-item{font-size:.76rem;line-height:1.52;margin-bottom:7px;padding-left:10px;border-left:2px solid var(--teal-lt);color:var(--dark)}
-.wwm-item.coral{border-left-color:var(--coral-lt)}
+.wwm-cell-title.indigo{color:var(--indigo)}
+.wwm-item{font-size:.74rem;line-height:1.52;margin-bottom:6px;color:var(--dark);padding-bottom:5px;border-bottom:1px solid #EAEAEA}
+.wwm-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 
 /* ── CHAPTER DIVIDER ── */
-.ch-div{min-height:297mm;display:flex;flex-direction:column;justify-content:flex-end;padding:56px;position:relative;overflow:hidden}
+.ch-div{min-height:297mm;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:56px 64px;position:relative;overflow:hidden}
 .ch-div.ch-teal{background:var(--teal)}
 .ch-div.ch-coral{background:var(--coral)}
 .ch-div.ch-indigo{background:var(--indigo)}
-.ch-ghost{position:absolute;right:-16px;bottom:40px;font-size:260px;font-weight:900;color:rgba(255,255,255,.07);line-height:1;letter-spacing:-8px;pointer-events:none}
-.ch-eyebrow{font-size:.6rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px}
-.ch-name{font-size:3.2rem;font-weight:900;color:#fff;line-height:1;margin-bottom:18px}
-.ch-rule{width:48px;height:2px;background:rgba(255,255,255,.35);margin-bottom:18px}
-.ch-tagline{font-size:.9rem;color:rgba(255,255,255,.8);margin-bottom:32px;line-height:1.55}
-.ch-chips{display:flex;gap:8px;flex-wrap:wrap}
-.ch-chip{background:rgba(255,255,255,.15);border-radius:99px;padding:4px 13px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.ch-ghost{position:absolute;font-size:290px;font-weight:900;color:rgba(255,255,255,.12);line-height:1;pointer-events:none;bottom:50px;left:0;right:0;text-align:center;letter-spacing:-8px}
+.ch-eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px}
+.ch-name{font-size:4rem;font-weight:900;color:#fff;line-height:1;margin-bottom:16px}
+.ch-rule{width:64px;height:2px;background:rgba(255,255,255,.45);margin:0 auto 16px}
+.ch-tagline{font-size:.92rem;color:rgba(255,255,255,.8);line-height:1.55}
+.ch-chips{position:absolute;bottom:36px;left:0;right:0;display:flex;justify-content:center;gap:8px;padding:0 48px;flex-wrap:wrap}
+.ch-chip{background:rgba(255,255,255,.18);border-radius:99px;padding:5px 14px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 
 /* ── CONTENT PAGE ── */
-.content-page{padding:22px 40px 88px;position:relative;min-height:calc(297mm - 48px)}
-.sec-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
-.sec-icon-box{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:#fff;font-style:normal}
+.content-page{padding:16px 40px 82px;position:relative;min-height:calc(297mm - 44px)}
+.sec-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:5px}
+.sec-icon-box{width:46px;height:46px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;color:#fff;font-style:normal;line-height:1}
 .sec-icon-box.teal{background:var(--teal)}
 .sec-icon-box.coral{background:var(--coral)}
 .sec-icon-box.indigo{background:var(--indigo)}
-.sec-hdr-text .sec-title{font-size:1rem;font-weight:800;color:var(--dark)}
-.sec-hdr-text .sec-desc{font-size:.76rem;color:var(--mid);font-style:italic;line-height:1.5;margin-top:2px}
+.sec-hdr-text .sec-title{font-size:1.08rem;font-weight:800;color:var(--dark)}
+.sec-hdr-text .sec-desc{font-size:.73rem;color:var(--mid);font-style:italic;line-height:1.5;margin-top:3px}
+.sec-instruction{font-size:.72rem;color:var(--mid);font-style:italic;margin:8px 0 10px}
 
 /* two-col stmt grid */
-.stmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin:12px 0 16px}
-.stmt-item{display:flex;gap:7px;align-items:flex-start;font-size:.77rem;line-height:1.55;color:var(--dark)}
-.stmt-dot{flex-shrink:0;width:15px;height:15px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;margin-top:1px}
+.stmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;margin:0 0 10px}
+.stmt-item{display:flex;gap:8px;align-items:flex-start;font-size:.75rem;line-height:1.52;color:var(--dark);padding:7px 8px;border-bottom:1px solid #EEF1F3}
+.stmt-dot{flex-shrink:0;width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#fff;margin-top:0}
 .stmt-dot.teal{background:var(--teal)}
 .stmt-dot.coral{background:var(--coral)}
 .stmt-dot.indigo{background:var(--indigo)}
 
 /* rebalancers */
-.reb-box{background:#FFFBF0;border:1px solid #E8C87A;border-radius:6px;padding:10px 13px 10px 30px;font-size:.77rem;line-height:1.52;font-style:italic;position:relative;margin-bottom:6px;color:var(--dark)}
-.reb-box::before{content:'"';position:absolute;left:9px;top:6px;font-size:1.3rem;color:#C8A030;font-style:normal;line-height:1}
+.reb-box{background:#FFFBF0;border:1px solid #E8C87A;border-radius:5px;padding:10px 13px 10px 30px;font-size:.75rem;line-height:1.52;font-style:italic;position:relative;margin-bottom:5px;color:var(--dark)}
+.reb-box::before{content:'\201C';position:absolute;left:9px;top:5px;font-size:1.3rem;color:#C8A030;font-style:normal;line-height:1}
 
 /* pressure points */
-.pp-warn-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px}
-.pp-warn-card{background:#FFF8F0;border:1px solid #F5C97A;border-radius:5px;padding:8px 10px;font-size:.74rem;line-height:1.45;display:flex;gap:6px}
-.pp-consider{background:var(--teal-lt);border-radius:5px;padding:7px 10px;display:flex;gap:9px;align-items:flex-start;font-size:.74rem;line-height:1.45;margin-bottom:5px}
-.pp-consider-tag{flex-shrink:0;font-size:.59rem;font-weight:800;text-transform:uppercase;color:var(--teal);width:46px;padding-top:1px}
+.pp-warn-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px}
+.pp-warn-card{background:#FFF8F0;border:1px solid #F5C97A;border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;display:flex;gap:6px}
+.pp-consider{background:var(--teal-lt);border-radius:4px;padding:7px 10px;display:flex;gap:9px;align-items:flex-start;font-size:.72rem;line-height:1.45;margin-bottom:4px}
+.pp-consider-tag{flex-shrink:0;font-size:.57rem;font-weight:800;text-transform:uppercase;color:var(--teal);width:46px;padding-top:1px}
 
 /* decision making */
-.dm-para{background:#F7F9FA;border-left:3px solid var(--indigo);border-radius:0 5px 5px 0;padding:10px 13px;font-size:.77rem;line-height:1.6;margin-bottom:10px;color:var(--dark)}
-.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
-.q-item{background:var(--light);border-radius:5px;padding:8px 10px;font-size:.74rem;line-height:1.45;color:var(--dark)}
+.dm-para{background:#F7F9FA;border-left:3px solid var(--indigo);border-radius:0 4px 4px 0;padding:10px 12px;font-size:.74rem;line-height:1.58;margin-bottom:10px;color:var(--dark)}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.q-item{background:var(--light);border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
 /* blind spot */
-.blind-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
-.blind-item{background:#FFF8F0;border-left:3px solid var(--coral);border-radius:0 5px 5px 0;padding:8px 10px;font-size:.74rem;line-height:1.45;color:var(--dark)}
+.blind-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.blind-item{background:#FFF8F0;border-left:3px solid var(--coral);border-radius:0 4px 4px 0;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
 /* resilience */
 .res-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.res-col{border-radius:5px;padding:10px 12px}
+.res-col{border-radius:4px;padding:10px 12px}
 .res-col.setback{background:#F0F4F8}
 .res-col.success{background:#F0F8F2}
-.res-col-title{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.res-col-title{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 .res-col.setback .res-col-title{color:#5A7090}
 .res-col.success .res-col-title{color:#3A7050}
-.res-item{font-size:.74rem;line-height:1.45;margin-bottom:5px;padding-left:8px;border-left:2px solid rgba(0,0,0,.1);color:var(--dark)}
-.proactive-item{background:var(--indigo-lt);border-left:3px solid var(--indigo);border-radius:0 5px 5px 0;padding:7px 10px;font-size:.74rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
+.res-item{font-size:.72rem;line-height:1.45;margin-bottom:4px;padding-left:8px;border-left:2px solid rgba(0,0,0,.1);color:var(--dark)}
+.proactive-item{background:var(--indigo-lt);border-left:3px solid var(--indigo);border-radius:0 4px 4px 0;padding:7px 10px;font-size:.72rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
 
 /* energisers */
-.drain-item{background:#FFF3E0;border:1px solid #F5C97A;border-radius:5px;padding:7px 10px;font-size:.74rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
+.drain-item{background:#FFF3E0;border:1px solid #F5C97A;border-radius:4px;padding:6px 10px;font-size:.72rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
 .en-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.en-col{border-radius:5px;padding:10px 12px}
+.en-col{border-radius:4px;padding:10px 12px}
 .en-col.recharge{background:var(--teal-lt)}
 .en-col.expand{background:var(--indigo-lt)}
-.en-col-title{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.en-col-title{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 .en-col.recharge .en-col-title{color:var(--teal)}
 .en-col.expand .en-col-title{color:var(--indigo)}
-.en-item{font-size:.74rem;line-height:1.45;margin-bottom:5px;padding-left:8px;border-left:2px solid rgba(0,0,0,.08);color:var(--dark)}
+.en-item{font-size:.72rem;line-height:1.45;margin-bottom:4px;padding-left:8px;border-left:2px solid rgba(0,0,0,.08);color:var(--dark)}
 
 /* confidence */
-.voice-box{background:var(--indigo-lt);border-top:3px solid var(--indigo);padding:11px 14px;margin-bottom:10px}
-.voice-lbl{font-size:.59rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:5px}
-.voice-text{font-size:.88rem;font-style:italic;color:var(--dark);line-height:1.45;font-weight:600}
-.conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px}
-.conf-item{background:var(--light);border-radius:5px;padding:8px 10px;font-size:.74rem;line-height:1.45;color:var(--dark)}
-.expand-item{background:var(--indigo-lt);border-left:3px solid var(--indigo);border-radius:0 5px 5px 0;padding:7px 10px;font-size:.74rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
+.voice-box{background:var(--indigo-lt);border-top:3px solid var(--indigo);padding:10px 14px;margin-bottom:10px}
+.voice-lbl{font-size:.57rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:4px}
+.voice-text{font-size:.85rem;font-style:italic;color:var(--dark);line-height:1.45;font-weight:600}
+.conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px}
+.conf-item{background:var(--light);border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
+.expand-item{background:var(--indigo-lt);border-left:3px solid var(--indigo);border-radius:0 4px 4px 0;padding:7px 10px;font-size:.72rem;line-height:1.45;margin-bottom:4px;color:var(--dark)}
 
 /* drivers */
-.drivers-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
-.driver-item{background:var(--light);border-radius:5px;padding:8px 10px;font-size:.74rem;line-height:1.45;color:var(--dark)}
+.drivers-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.driver-item{background:var(--light);border-radius:4px;padding:7px 10px;font-size:.72rem;line-height:1.45;color:var(--dark)}
 
 /* coaching prompt */
-.coaching-prompt{background:#F4F6F8;border-top:2px solid #C5D9DA;padding:13px 40px;position:absolute;bottom:0;left:0;right:0}
-.cp-label{font-size:.57rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);margin-bottom:4px}
-.cp-q{font-size:.79rem;font-style:italic;color:var(--dark);line-height:1.5}
+.coaching-prompt{position:absolute;bottom:0;left:0;right:0;border-left:4px solid var(--teal);background:#F8FAFC;border-top:1px solid #DDE8EC;padding:12px 16px 12px 40px;display:flex;gap:14px;align-items:flex-start}
+.cp-label{font-size:.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);flex-shrink:0;width:66px;padding-top:2px;line-height:1.3}
+.cp-q{font-size:.78rem;font-style:italic;color:var(--dark);line-height:1.5}
+
+/* page footer */
+.page-footer{position:absolute;bottom:0;left:0;right:0;padding:7px 40px;border-top:1px solid #E8EEF0;display:flex;justify-content:space-between;align-items:center;font-size:.55rem;color:#9AAAB4;background:#fff}
 
 /* sub-labels */
-.sub-lbl{font-size:.72rem;color:var(--mid);font-style:italic;margin-bottom:7px;margin-top:10px}
+.sub-lbl{font-size:.7rem;color:var(--mid);font-style:italic;margin-bottom:6px;margin-top:8px}
 
 /* loading */
 .loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;color:var(--mid);background:#fff;max-width:210mm;margin:20px auto}
@@ -166,14 +184,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 @media print{
   @page{size:A4;margin:0}
   body{background:#fff}
-  .top-bar{display:none!important}
-  .print-page{
-    width:210mm;height:297mm;min-height:unset;
-    margin:0;box-shadow:none;
-    page-break-after:always;overflow:hidden;
-  }
+  .print-page{width:210mm;height:297mm;min-height:unset;margin:0;box-shadow:none;page-break-after:always;overflow:hidden}
   .print-page:last-child{page-break-after:auto}
-  .cover,.ch-div,.sec-icon-box,.stmt-dot,.run-hdr,.coaching-prompt,.wwm-cell-title,.pp-warn-card,.pp-consider,.reb-box,.voice-box,.en-col,.res-col,.drain-item,.proactive-item,.expand-item,.conf-item,.driver-item,.q-item,.blind-item,.dm-para{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cover,.ch-div,.perf-intro,.perf-lead-band,.perf-card,.sec-icon-box,.stmt-dot,
+  .run-hdr,.coaching-prompt,.wwm-cell,.wwm-hdr,.perf-order-section,
+  .pp-warn-card,.pp-consider,.reb-box,.voice-box,.en-col,.res-col,
+  .drain-item,.proactive-item,.expand-item,.conf-item,.driver-item,
+  .q-item,.blind-item,.dm-para{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 </style>
 </head>
@@ -287,24 +304,24 @@ const CORE_COLORS={'Composed':'#6B8C78','Open':'#E87B30','Reserved':'#6B4E9A','E
 function nodeArt(){
   const nodes=[[50,60],[160,28],[290,75],[205,145],[95,185],[330,158],[430,58],[385,182],[255,265],[455,200],[148,282]];
   const links=[[0,1],[1,2],[2,3],[3,4],[4,0],[2,5],[5,6],[6,7],[7,5],[3,5],[5,8],[8,9],[9,7],[8,10],[10,4],[1,3]];
-  const lines=links.map(([a,b])=>`<line x1="${nodes[a][0]}" y1="${nodes[a][1]}" x2="${nodes[b][0]}" y2="${nodes[b][1]}" stroke="#3BAAB0" stroke-width="1.2" stroke-opacity=".8"/>`).join('');
-  const dots=nodes.map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${[0,5].includes(i)?5:3}" fill="#3BAAB0" opacity="${[0,5,9].includes(i)?1:.7}"/>`).join('');
-  return`<svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">${lines}${dots}</svg>`;
+  const lines=links.map(([a,b])=>`<line x1="${nodes[a][0]}" y1="${nodes[a][1]}" x2="${nodes[b][0]}" y2="${nodes[b][1]}" stroke="#3BAAB0" stroke-width="1.2" stroke-opacity=".9"/>`).join('');
+  const dots=nodes.map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${[0,5].includes(i)?5.5:3}" fill="#3BAAB0" opacity="${[0,5,9].includes(i)?1:.6}"/>`).join('');
+  return`<svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">${lines}${dots}</svg>`;
 }
 
-function pieWheel(types,colors,leadType,size=130){
+function pieWheel(types,colors,leadType,size=120){
   const n=types.length,angle=360/n,cx=size/2,cy=size/2,r=size/2-2;
   let paths='';
   types.forEach((t,i)=>{
     const a0=(i*angle-90)*Math.PI/180,a1=((i+1)*angle-90)*Math.PI/180;
     const x1=cx+r*Math.cos(a0),y1=cy+r*Math.sin(a0),x2=cx+r*Math.cos(a1),y2=cy+r*Math.sin(a1);
     const isLead=t===leadType;
-    paths+=`<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 0,1 ${x2},${y2} Z" fill="${colors[t]}" opacity="${isLead?1:.45}"/>`;
-    const am=((i+.5)*angle-90)*Math.PI/180,lr=r*.62;
+    paths+=`<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 0,1 ${x2},${y2} Z" fill="${colors[t]}" opacity="${isLead?1:.4}"/>`;
+    const am=((i+.5)*angle-90)*Math.PI/180,lr=r*.6;
     const lx=cx+lr*Math.cos(am),ly=cy+lr*Math.sin(am);
-    paths+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="6.5" font-weight="800" font-family="system-ui,sans-serif">${t.substring(0,3).toUpperCase()}</text>`;
+    paths+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="6" font-weight="800" font-family="system-ui,sans-serif">${t.substring(0,3).toUpperCase()}</text>`;
   });
-  return`<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${paths}<circle cx="${cx}" cy="${cy}" r="14" fill="white"/><text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" fill="#1A1A2E" font-size="5.5" font-weight="800" font-family="system-ui,sans-serif">LEAD</text></svg>`;
+  return`<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${paths}<circle cx="${cx}" cy="${cy}" r="16" fill="white"/></svg>`;
 }
 
 function typeOrder(types,lead,secondary){
@@ -312,20 +329,27 @@ function typeOrder(types,lead,secondary){
   return[lead,secondary,...rest].filter(Boolean);
 }
 
-function gaugeBar(order,types,baseColor,w=230){
-  const sw=w/types.length,h=44;
-  let rects='',lbls='';
-  types.forEach((t,i)=>{
-    const pos=order.indexOf(t);
-    const x=i*sw;
-    const fills=['#0D7377','rgba(13,115,119,.4)','rgba(13,115,119,.2)','rgba(180,190,200,.35)'];
-    const textCols=['white','#0A5C60','#0A5C60','#5A6678'];
-    const posLabels=['Lead','2nd','3rd','Blind'];
-    rects+=`<rect x="${x+1}" y="4" width="${sw-2}" height="18" rx="3" fill="${fills[pos]||fills[3]}"/>`;
-    if(pos<4) rects+=`<text x="${x+sw/2}" y="16.5" text-anchor="middle" fill="${textCols[pos]}" font-size="5.5" font-weight="800" font-family="system-ui">${posLabels[pos]}</text>`;
-    lbls+=`<text x="${x+sw/2}" y="36" text-anchor="middle" fill="#1A1A2E" font-size="6.5" font-weight="600" font-family="system-ui">${esc(t)}</text>`;
-  });
-  return`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${rects}${lbls}</svg>`;
+function semiGauge(typeName,rank,color){
+  // rank: 0=Lead, 1=2nd, 2=3rd, 3=Blind spot
+  const gw=72,gh=52,gcx=36,gcy=46,gr=28;
+  // Dot angle: rank 0 (Lead) = upper right, rank 3 (Blind) = upper left
+  // range from pi/8 (22.5deg, upper right) to 7pi/8 (157.5deg, upper left)
+  const theta=Math.PI/8+(rank/3)*(3*Math.PI/4);
+  // SVG coords: x=cx+r*cos(theta), y=cy-r*sin(theta)
+  const dotX=gcx+gr*Math.cos(theta);
+  const dotY=gcy-gr*Math.sin(theta);
+  const isBlind=rank===3;
+  const dotFill=isBlind?'#C0CDD2':color;
+  const nameColor=isBlind?'#9AAAB4':color;
+  const posLabels=['Lead','2nd','3rd','Blind spot'];
+  return`<div class="gauge-item">
+    <svg width="${gw}" height="${gh}" viewBox="0 0 ${gw} ${gh}" xmlns="http://www.w3.org/2000/svg">
+      <path d="M ${gcx-gr},${gcy} A ${gr},${gr} 0 0,1 ${gcx+gr},${gcy}" fill="none" stroke="#D4E0E4" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="${dotX}" cy="${dotY}" r="5" fill="${dotFill}"/>
+    </svg>
+    <div class="gauge-name" style="color:${nameColor}">${esc(typeName)}</div>
+    <div class="gauge-pos">${posLabels[rank]}</div>
+  </div>`;
 }
 
 function page(extraClass,content){
@@ -336,46 +360,82 @@ function page(extraClass,content){
 function coverPage(name,date){
   return page('cover',`
     <div class="cb cb-tl"></div><div class="cb cb-tr"></div>
-    <div class="cb cb-bl"></div><div class="cb cb-br"></div>
     <div class="cover-art">${nodeArt()}</div>
-    <div class="cover-eyebrow">Decode</div>
     <div class="cover-content">
       <div class="cover-label">Decode Profile</div>
       <div class="cover-name">${esc(name)}</div>
       <div class="cover-meta">${esc(date)}&ensp;·&ensp;Confidential</div>
     </div>
+    <div class="cover-footer">
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" style="opacity:.65">
+        <polygon points="22,4 38,36 6,36" fill="none" stroke="#3BAAB0" stroke-width="2.5"/>
+        <line x1="22" y1="12" x2="22" y2="30" stroke="#3BAAB0" stroke-width="2"/>
+        <line x1="14" y1="28" x2="30" y2="28" stroke="#3BAAB0" stroke-width="2"/>
+      </svg>
+      <div>
+        <div class="cover-footer-brand">Andrew Hall Coaching</div>
+        <div class="cover-footer-tagline">Decode your performance.&nbsp; Expand your range.</div>
+      </div>
+    </div>
   `);
 }
 
 function perfLeadPage(lF,lC,secF,secC,fOrder,cOrder,flowIntro,coreIntro){
-  const fWheel=pieWheel(FLOW_TYPES,FLOW_COLORS,lF);
-  const cWheel=pieWheel(CORE_TYPES,CORE_COLORS,lC);
-  const fGauge=gaugeBar(fOrder,FLOW_TYPES,FLOW_COLORS[lF]);
-  const cGauge=gaugeBar(cOrder,CORE_TYPES,CORE_COLORS[lC]);
+  const fWheel=pieWheel(FLOW_TYPES,FLOW_COLORS,lF,110);
+  const cWheel=pieWheel(CORE_TYPES,CORE_COLORS,lC,110);
+
+  // type order string with colored names
+  const orderStr=(order,colors,lead)=>order.map(t=>{
+    const c=t===lead?colors[t]:'#6A7A84';
+    const w=t===lead?700:400;
+    return`<span style="color:${c};font-weight:${w}">${esc(t)}</span>`;
+  }).join(' <span style="color:#9AAAB4"> · </span> ');
+
+  const cOrderStr=orderStr(cOrder,CORE_COLORS,lC);
+  const fOrderStr=orderStr(fOrder,FLOW_COLORS,lF);
+
+  // gauge rows
+  const cGauges=cOrder.map((t,i)=>semiGauge(t,i,CORE_COLORS[t])).join('');
+  const fGauges=fOrder.map((t,i)=>semiGauge(t,i,FLOW_COLORS[t])).join('');
+
+  // lead pills (CORE first, then FLOW to match PDF)
+  const cPill=`<span class="perf-lead-pill" style="background:${CORE_COLORS[lC]}">${esc(lC)}</span>`;
+  const fPill=`<span class="perf-lead-pill" style="background:${FLOW_COLORS[lF]}">${esc(lF)}</span>`;
+
   return page('',`
-    <div class="run-hdr"><span>Decode Profile · Confidential</span><span>Performance Lead</span></div>
-    <div class="perf-page">
-      <div class="page-title-bar">Understanding your Performance Lead</div>
-      <div class="type-wheels">
-        <div class="wheel-col">
-          <div class="wheel-type-lbl">FLOW — Behavioural Style</div>
-          ${fWheel}
-          <div style="margin-top:4px">${fGauge}</div>
-          <div style="margin-top:12px;width:100%">
-            <div class="wheel-lead-lbl" style="color:${FLOW_COLORS[lF]||'#0D7377'}">Lead: ${esc(lF)}</div>
-            <div class="wheel-intro">${esc(flowIntro)}</div>
-          </div>
-        </div>
-        <div class="wheel-col">
-          <div class="wheel-type-lbl">CORE — Mindset</div>
-          ${cWheel}
-          <div style="margin-top:4px">${cGauge}</div>
-          <div style="margin-top:12px;width:100%">
-            <div class="wheel-lead-lbl" style="color:${CORE_COLORS[lC]||'#6B8C78'}">Lead: ${esc(lC)}</div>
-            <div class="wheel-intro">${esc(coreIntro)}</div>
-          </div>
-        </div>
+    <div class="run-hdr"><span>Decode Profile&nbsp;·&nbsp;Confidential</span></div>
+    <div class="perf-intro">
+      <div class="perf-intro-eyebrow">Before you begin</div>
+      <div class="perf-intro-title">Understanding your Performance Lead</div>
+      <div class="perf-intro-text">Your Performance Lead combines two frameworks — your Mindset Lead and your Behavioural Lead. Every chapter draws on both, because the two are always in play at the same time.</div>
+    </div>
+    <div class="perf-lead-band">
+      <div class="perf-lead-eyebrow">Your Performance Lead</div>
+      <div class="perf-lead-pills">${cPill} <span style="font-size:.85rem;color:var(--mid);font-weight:500">&amp;</span> ${fPill}</div>
+      <div class="perf-lead-text">Your Mindset Lead and Behavioural Lead combined — a lens for understanding your performance and expanding what you're capable of.</div>
+    </div>
+    <div class="perf-cards">
+      <div class="perf-card core-card">
+        <div class="perf-card-label">Core</div>
+        <div class="perf-card-title">Mindset Lead</div>
+        <div class="perf-card-wheel">${cWheel}</div>
+        <div class="perf-card-order">${cOrderStr}</div>
+        <div class="perf-card-intro">${esc(coreIntro)}</div>
       </div>
+      <div class="perf-card flow-card">
+        <div class="perf-card-label">Flow</div>
+        <div class="perf-card-title">Behavioural Lead</div>
+        <div class="perf-card-wheel">${fWheel}</div>
+        <div class="perf-card-order">${fOrderStr}</div>
+        <div class="perf-card-intro">${esc(flowIntro)}</div>
+      </div>
+    </div>
+    <div class="perf-order-section">
+      <div class="perf-order-label">Preference Order</div>
+      <div class="perf-order-row-label">Core · Mindset</div>
+      <div class="perf-order-gauges">${cGauges}</div>
+      <div class="perf-order-row-label">Flow · Behaviour</div>
+      <div class="perf-order-gauges">${fGauges}</div>
     </div>
   `);
 }
@@ -385,38 +445,40 @@ function workWithMePage(fc,cc){
   const triggers=(cc['Stress Triggers']||[]).slice(0,5);
   const reb=(fc.Rebalancers||[]).slice(0,4);
   const str=(fc.Strengths||[]).slice(0,5);
-  const row=(items,isCoral)=>items.map(s=>`<div class="wwm-item${isCoral?' coral':''}">${esc(s)}</div>`).join('');
+
+  function cell(title,items,ruleClass,titleClass){
+    const rows=items.map(s=>`<div class="wwm-item">${esc(s)}</div>`).join('');
+    return`<div class="wwm-cell">
+      <div class="wwm-cell-rule ${ruleClass||''}"></div>
+      <div class="wwm-cell-title ${titleClass||''}">${title}</div>
+      ${rows}
+    </div>`;
+  }
+
   return page('',`
-    <div class="run-hdr"><span>Decode Profile · Confidential</span><span>How to Work with Me</span></div>
-    <div class="wwm-page">
-      <div class="page-title-bar">How to Work with Me</div>
-      <div class="wwm-grid">
-        <div class="wwm-cell">
-          <div class="wwm-cell-title">What Brings Out My Best</div>${row(unlock,false)}
-        </div>
-        <div class="wwm-cell">
-          <div class="wwm-cell-title coral">What to Avoid</div>${row(triggers,true)}
-        </div>
-        <div class="wwm-cell">
-          <div class="wwm-cell-title">How to Give Me Feedback</div>${row(reb,false)}
-        </div>
-        <div class="wwm-cell">
-          <div class="wwm-cell-title">Where I Contribute Most</div>${row(str,false)}
-        </div>
-      </div>
+    <div class="run-hdr"><span>Decode Profile&nbsp;·&nbsp;Confidential</span><span>How to Work with Me</span></div>
+    <div class="wwm-hdr">
+      <div class="wwm-hdr-title">HOW TO WORK WITH ME</div>
+      <div class="wwm-hdr-sub">A guide for colleagues and managers — feel free to share this page</div>
+    </div>
+    <div class="wwm-grid">
+      ${cell('What Brings Out My Best',unlock,'','')}
+      ${cell('What to Avoid',triggers,'coral','coral')}
+      ${cell('How to Give Me Feedback',reb,'','')}
+      ${cell('Where I Contribute Most',str,'indigo','indigo')}
     </div>
   `);
 }
 
 function chDivPage(num,leadType){
   const names={1:'Assess',2:'Respond',3:'Sustain'};
-  const tags={1:'Understanding your natural performance style and what you bring.',2:'Managing yourself when under sustained pressure.',3:'Building and sustaining your performance over the long term.'};
+  const tags={1:'How you show up at your best — and what can get in the way',2:'How your preferences shape your response to pressure and change',3:'Building and sustaining your performance over the long term'};
   const secs={1:['Strengths','Derailers','Unlock','Rebalancers'],2:['Stress Triggers','Pressure Points','Decision Making','Blind Spot'],3:['Resilience','Drivers','Energisers','Confidence']};
   const cols={1:'ch-teal',2:'ch-coral',3:'ch-indigo'};
   const chips=secs[num].map(s=>`<div class="ch-chip">${s}</div>`).join('');
   return page(`ch-div ${cols[num]}`,`
     <div class="ch-ghost">0${num}</div>
-    <div class="ch-eyebrow">Chapter 0${num}</div>
+    <div class="ch-eyebrow">Chapter&nbsp; 0${num}</div>
     <div class="ch-name">${names[num]}</div>
     <div class="ch-rule"></div>
     <div class="ch-tagline">${esc(tags[num])}</div>
@@ -424,18 +486,33 @@ function chDivPage(num,leadType){
   `);
 }
 
-function stmtGrid(items,dotCls){
+function stmtGrid(items,dotCls,icon){
   if(!items||!items.length)return'';
-  return`<div class="stmt-grid">${items.map(s=>`<div class="stmt-item"><div class="stmt-dot ${dotCls}">·</div><span>${esc(s)}</span></div>`).join('')}</div>`;
+  return`<div class="stmt-grid">${items.map(s=>`<div class="stmt-item"><div class="stmt-dot ${dotCls}">${icon||'·'}</div><span>${esc(s)}</span></div>`).join('')}</div>`;
 }
 
+let _pageNum=2;
 function contentPage(secName,data,chNum){
   const chNames={1:'Assess',2:'Respond',3:'Sustain'};
   const [icon,iconCls]=SEC_ICONS[secName]||['·','teal'];
   const prompt=COACHING_PROMPTS[secName]||'';
   const desc=SEC_DESC[secName]||'';
-  let body='';
+  const pn=++_pageNum;
 
+  // Sections that have a "select" instruction
+  const selectSecs=new Set(['Strengths','Derailers','Unlock','Rebalancers','Stress Triggers','Blind Spot','Drivers']);
+  const selectMsgs={
+    'Strengths':'Select two or three that feel most true for you right now.',
+    'Derailers':'Select two or three that resonate — particularly when you're under pressure.',
+    'Unlock':'Select two or three to share with your manager or coach.',
+    'Rebalancers':'Select two or three to work with during your coaching.',
+    'Stress Triggers':'Select two or three that feel most live for you.',
+    'Blind Spot':'Select two or three that resonate most.',
+    'Drivers':'Select two or three that feel most true for you right now.',
+  };
+  const instruction=selectSecs.has(secName)?`<div class="sec-instruction">${esc(selectMsgs[secName]||'Select two or three that feel most true for you.')}</div>`:'';
+
+  let body='';
   if(secName==='Rebalancers'){
     body=(data||[]).map(s=>`<div class="reb-box">${esc(s)}</div>`).join('');
   } else if(secName==='Pressure Points'&&data){
@@ -462,15 +539,17 @@ function contentPage(secName,data,chNum){
     const ex=(data.expand||[]).map(s=>`<div class="expand-item">${esc(s)}</div>`).join('');
     body=`<div class="voice-box"><div class="voice-lbl">Your inner voice may sound like:</div><div class="voice-text">${esc(data.inner_voice||'')}</div></div><p class="sub-lbl">Natural sources of confidence:</p><div class="conf-grid">${sr}</div><p class="sub-lbl" style="margin-top:10px">To expand your base:</p>${ex}`;
   } else if(secName==='Drivers'&&Array.isArray(data)){
-    body=`<div class="drivers-grid">${data.map(s=>`<div class="driver-item">${esc(s)}</div>`).join('')}</div>`;
+    body=stmtGrid(data,iconCls,icon);
   } else if(Array.isArray(data)){
-    body=stmtGrid(data,iconCls);
+    body=stmtGrid(data,iconCls,icon);
   }
 
-  const promptBar=prompt?`<div class="coaching-prompt"><div class="cp-label">Coaching Prompt</div><div class="cp-q">${esc(prompt)}</div></div>`:'';
+  const hasPrompt=!!prompt;
+  const promptBar=hasPrompt?`<div class="coaching-prompt"><div class="cp-label">Coaching Prompt</div><div class="cp-q">${esc(prompt)}</div></div>`:'';
+  const footer=!hasPrompt?`<div class="page-footer"><span>The Coaching Doc Ltd.</span><span>Page ${pn}</span></div>`:'';
 
   return page('',`
-    <div class="run-hdr"><span>Decode Profile · Confidential</span><span>Chapter ${chNum} · ${chNames[chNum]}</span></div>
+    <div class="run-hdr"><span>Decode Profile&nbsp;·&nbsp;Confidential</span><span>Chapter ${chNum}&nbsp;·&nbsp;${chNames[chNum]}</span></div>
     <div class="content-page">
       <div class="sec-header">
         <div class="sec-icon-box ${iconCls}">${icon}</div>
@@ -479,14 +558,16 @@ function contentPage(secName,data,chNum){
           <div class="sec-desc">${esc(desc)}</div>
         </div>
       </div>
+      ${instruction}
       ${body}
     </div>
     ${promptBar}
+    ${footer}
   `);
 }
-
 // ── MAIN ──────────────────────────────────────────────────────────────────────
 async function loadProfile(){
+  _pageNum=2;
   const id=new URLSearchParams(window.location.search).get('id');
   if(!id){
     document.getElementById('root').innerHTML='<div class="loading-screen"><div>No profile ID in URL.<br><small>Use ?id=PROFILE_ID</small></div></div>';
@@ -501,8 +582,6 @@ async function loadProfile(){
   const p=rows[0];
   const name=p.clients?.name||'Unknown';
   const lF=p.flow_lead,lC=p.core_lead,secF=p.flow_secondary,secC=p.core_secondary;
-  const fAvg=(p.scores?.fAvg)||{};
-  const cAvg=(p.scores?.cAvg)||{};
   const fOrder=p.flow_order||typeOrder(FLOW_TYPES,lF,secF);
   const cOrder=p.core_order||typeOrder(CORE_TYPES,lC,secC);
   const date=p.report_date||new Date(p.created_at).toLocaleDateString('en-GB',{month:'long',year:'numeric'});

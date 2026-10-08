@@ -465,7 +465,8 @@ function perfLeadPage(lF,lC,secF,secC,fOrder,cOrder,flowIntro,coreIntro){
   const cOrderStr=orderStr(cOrder,CORE_COLORS,lC);
   const fOrderStr=orderStr(fOrder,FLOW_COLORS,lF);
 
-  // gauge rows$1
+  // gauge rows
+  const cGauges=cOrder.map((t,i)=>semiGauge(t,i,CORE_COLORS[t])).join('');
   const fGauges=fOrder.map((t,i)=>semiGauge(t,i,FLOW_COLORS[t])).join('');
 
   // lead pills (CORE first, then FLOW to match PDF)

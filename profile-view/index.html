@@ -467,7 +467,6 @@ function perfLeadPage(lF,lC,secF,secC,fOrder,cOrder,flowIntro,coreIntro){
 
   // gauge rows
   const cGauges=cOrder.map((t,i)=>semiGauge(t,i,CORE_COLORS[t])).join('');
-  const fGauges=fOrder.map((t,i)=>semiGauge(t,i,FLOW_COLORS[t])).join('');
 
   // lead pills (CORE first, then FLOW to match PDF)
   const cPill=`<span class="perf-lead-pill" style="background:${CORE_COLORS[lC]}">${esc(lC)}</span>`;
@@ -719,13 +718,13 @@ function summaryPage(name,lF,lC,fOrder,cOrder){
         <div class="summ-sec-hdr core-hdr">
           <div class="summ-sec-eyebrow">Core &middot; Mindset Lead</div>
         </div>
-        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px">class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${cWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${cGauges}</div></div></div>
+        <div class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${cWheel}</div>
       </div>
       <div class="summ-section" style="flex:1">
         <div class="summ-sec-hdr flow-hdr">
           <div class="summ-sec-eyebrow">Flow &middot; Behavioural Lead</div>
         </div>
-        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px">class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${fWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${fGauges}</div></div></div>
+        <div class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${fWheel}</div>
       </div>
     </div>
     <div class="page-footer"><span>The Coaching Doc Ltd.</span><span style="font-size:.48rem;color:#B0BEC5">Profile narrative generated with AI assistance&nbsp;&middot;&nbsp;Psychometric basis: RST + Big Five research</span><span>Page ${pn}</span></div>

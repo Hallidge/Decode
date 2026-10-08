@@ -338,6 +338,8 @@ const FLOW_TYPES=['Warm','Outgoing','Logical','Firm'];
 const CORE_TYPES=['Composed','Open','Reserved','Energised'];
 const FLOW_COLORS={'Warm':'#0D7377','Outgoing':'#3BAAB0','Logical':'#2E5FA3','Firm':'#1C3A6E'};
 const CORE_COLORS={'Composed':'#6B8C78','Open':'#E87B30','Reserved':'#6B4E9A','Energised':'#C44B1C'};
+const CORE_TRAITS={'Composed':['Consistent','Grounded','Reliable','Resilient','Calm','Steady'],'Open':['Exploratory','Open-minded','Innovative','Creative','Adaptive','Curious'],'Reserved':['Reflective','Selective','Thoughtful','Deliberate','Considered','Private'],'Energised':['Proactive','Energetic','Motivated','Bold','Ambitious','Driven']};
+const FLOW_TRAITS={'Warm':['Empathetic','Supportive','Caring','Loyal','Inclusive','Trusting'],'Outgoing':['Energising','Confident','Enthusiastic','Sociable','Engaging','Expressive'],'Logical':['Analytical','Precise','Structured','Methodical','Evidence-led','Rigorous'],'Firm':['Demanding','Outcome-led','Purposeful','Assertive','Decisive','Direct']};
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 let _pageNum=2;
@@ -349,6 +351,35 @@ function nodeArt(){
   return`<svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">${lines}${dots}</svg>`;
 }
 
+function sunburstWheel(types,colors,leadType,traits,size=260){
+  const cx=size/2,cy=size/2,n=types.length;
+  const step=(2*Math.PI)/n;
+  const pieR=size*0.285,innerR=size*0.11,lbR=pieR+size*0.025;
+  const trN=6;
+  let segs='',tnames='',tlabels='';
+  types.forEach((t,i)=>{
+    const a0=i*step-Math.PI/2,a1=(i+1)*step-Math.PI/2;
+    const c=colors[t],isLead=t===leadType,op=isLead?'1':'0.65';
+    const x0=cx+pieR*Math.cos(a0),y0=cy+pieR*Math.sin(a0);
+    const x1=cx+pieR*Math.cos(a1),y1=cy+pieR*Math.sin(a1);
+    segs+=`<path d="M${cx},${cy}L${x0.toFixed(1)},${y0.toFixed(1)}A${pieR},${pieR} 0 0,1 ${x1.toFixed(1)},${y1.toFixed(1)}Z" fill="${c}" opacity="${op}"/>`;
+    const midA=(a0+a1)/2,tfs=Math.round(size/22);
+    const tx=cx+pieR*0.62*Math.cos(midA),ty=cy+pieR*0.62*Math.sin(midA);
+    tnames+=`<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="${tfs}" font-weight="800" font-family="'Segoe UI',Helvetica,Arial,sans-serif">${esc(t)}</text>`;
+    const typeTraits=(traits[t]||[]).slice(0,trN);
+    const margin=step*0.06;
+    typeTraits.forEach((tr,j)=>{
+      const a=a0+margin+(j+0.5)*(step-2*margin)/trN;
+      const lx=cx+lbR*Math.cos(a),ly=cy+lbR*Math.sin(a);
+      let rot=(a*180/Math.PI),anchor='start';
+      if(Math.cos(a)<-0.01){rot+=180;anchor='end';}
+      const lfs=Math.round(size/33),fw=isLead?'700':'500';
+      tlabels+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" font-size="${lfs}" font-weight="${fw}" fill="${c}" font-family="'Segoe UI',Helvetica,Arial,sans-serif" transform="rotate(${rot.toFixed(1)},${lx.toFixed(1)},${ly.toFixed(1)})">${esc(tr)}</text>`;
+    });
+  });
+  const lc=colors[leadType],cfs=Math.round(size/18);
+  return`<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">${segs}${tlabels}<circle cx="${cx}" cy="${cy}" r="${innerR}" fill="white"/><text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" fill="${lc}" font-size="${cfs}" font-weight="800" font-family="'Segoe UI',Helvetica,Arial,sans-serif">${esc(leadType)}</text>${tnames}</svg>`;
+}
 function pieWheel(types,colors,leadType,size=140){
   const n=types.length,angle=360/n,cx=size/2,cy=size/2,r=size/2-2;
   const fs=Math.max(4.5,size/24);
@@ -669,9 +700,8 @@ function summaryPage(name,lF,lC,fOrder,cOrder){
   const pn=++_pageNum;
   const cPill=`<span class="perf-lead-pill" style="background:${CORE_COLORS[lC]}">${esc(lC)}</span>`;
   const fPill=`<span class="perf-lead-pill" style="background:${FLOW_COLORS[lF]}">${esc(lF)}</span>`;
-  const cWheel=pieWheel(CORE_TYPES,CORE_COLORS,lC,150);
-  const fWheel=pieWheel(FLOW_TYPES,FLOW_COLORS,lF,150);
-  const cGauges=cOrder.map((t,i)=>semiGauge(t,i,CORE_COLORS[t])).join('');
+  const cWheel=sunburstWheel(CORE_TYPES,CORE_COLORS,lC,CORE_TRAITS,260);
+  const fWheel=sunburstWheel(FLOW_TYPES,FLOW_COLORS,lF,FLOW_TRAITS,260);
   const fGauges=fOrder.map((t,i)=>semiGauge(t,i,FLOW_COLORS[t])).join('');
   const cOrderStr=cOrder.map(t=>`<span style="color:${t===lC?CORE_COLORS[t]:'#6A7A84'};font-weight:${t===lC?700:400}">${esc(t)}</span>`).join('<span style="color:#9AAAB4"> &middot; </span>');
   const fOrderStr=fOrder.map(t=>`<span style="color:${t===lF?FLOW_COLORS[t]:'#6A7A84'};font-weight:${t===lF?700:400}">${esc(t)}</span>`).join('<span style="color:#9AAAB4"> &middot; </span>');
@@ -689,13 +719,13 @@ function summaryPage(name,lF,lC,fOrder,cOrder){
         <div class="summ-sec-hdr core-hdr">
           <div class="summ-sec-eyebrow">Core &middot; Mindset Lead</div>
         </div>
-        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px"><div style="flex-shrink:0">${cWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${cGauges}</div></div></div>
+        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px">class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${cWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${cGauges}</div></div></div>
       </div>
       <div class="summ-section" style="flex:1">
         <div class="summ-sec-hdr flow-hdr">
           <div class="summ-sec-eyebrow">Flow &middot; Behavioural Lead</div>
         </div>
-        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px"><div style="flex-shrink:0">${fWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${fGauges}</div></div></div>
+        <div class="summ-sec-body" style="flex:1;padding:14px 20px;gap:24px">class="summ-sec-body" style="flex:1;align-items:center;justify-content:center">${fWheel}</div><div style="display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:.52rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px">Preference Order</div><div class="perf-order-gauges" style="flex-wrap:wrap;gap:8px 4px">${fGauges}</div></div></div>
       </div>
     </div>
     <div class="page-footer"><span>The Coaching Doc Ltd.</span><span style="font-size:.48rem;color:#B0BEC5">Profile narrative generated with AI assistance&nbsp;&middot;&nbsp;Psychometric basis: RST + Big Five research</span><span>Page ${pn}</span></div>
